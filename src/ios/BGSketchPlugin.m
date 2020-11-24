@@ -171,7 +171,7 @@ typedef NSUInteger InputType;
             [rootVC.navigationController setNavigationBarHidden:YES];
             [navVC pushViewController:touchDrawVC animated:NO];
             
-            if (@available(iOS 13.0, *)) {
+            if (@available(iOS 13.0, *) || @available(iOS 14.0, *)) {
                 [navVC setModalPresentationStyle: UIModalPresentationFullScreen];
             } else {
                 // Fallback on earlier versions

@@ -143,7 +143,16 @@ typedef NSUInteger InputType;
             UIViewController *rootVC = [[UIViewController alloc] init]; // dummy root view controller
             UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:rootVC];
             [rootVC.navigationController setNavigationBarHidden:YES];
+            
             [navVC pushViewController:touchDrawVC animated:NO];
+               if(@available(iOS 14.0, *)) {
+                [navVC setModalPresentationStyle: UIModalPresentationFullScreen];
+            } else if(@available(iOS 13.0, *)) {
+                [navVC setModalPresentationStyle: UIModalPresentationFullScreen];
+            } else {
+                // Fallback on earlier versions
+            }
+            
             [self.viewController presentViewController:navVC animated:YES completion:nil];
             self.navigationController = navVC;
         });
